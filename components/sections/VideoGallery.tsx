@@ -69,7 +69,11 @@ export default function VideoGallery({ projects }: VideoGalleryProps) {
         if (video) {
             if (isHovering) {
                 video.play().catch(() => {})
-                setPlayingVideos(prev => new Set([...prev, projectId]))
+                setPlayingVideos(prev => {
+                    const newSet = new Set(prev)
+                    newSet.add(projectId)
+                    return newSet
+                })
             } else {
                 video.pause()
                 video.currentTime = 0
