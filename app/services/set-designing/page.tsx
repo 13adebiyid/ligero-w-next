@@ -20,6 +20,7 @@ export default function SetDesigningPage() {
                     </h1>
 
                     <VideoGallery projects={setDesignProjects} />
+
                 </div>
             </div>
         </div>
