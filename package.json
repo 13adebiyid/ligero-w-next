@@ -16,6 +16,7 @@
     "@types/react": "18.2.47",
     "@types/react-dom": "18.2.18",
     "@vercel/analytics": "^1.1.1",
+    "clsx": "^2.1.0",
     "framer-motion": "^10.17.9",
     "gsap": "^3.12.4",
     "lenis": "^1.0.42",
@@ -25,6 +26,7 @@
     "react-intersection-observer": "^9.5.3",
     "react-use": "^17.4.2",
     "sharp": "^0.33.1",
+    "tailwind-merge": "^2.2.0",
     "three": "^0.160.0",
     "typescript": "5.3.3"
   },
