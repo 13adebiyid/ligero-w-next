@@ -13,7 +13,7 @@ export const teamMembers: TeamMember[] = [
             'Her philosophy centers on authentic storytelling that resonates across cultures, creating visual experiences that leave lasting impressions.'
         ],
         image: '/images/ash-portrait.webp',
-        heroImage: '/images/ash-hero.webp',
+        heroImage: '/images/ash-hero.png',
         socialLinks: [
             { platform: 'instagram', url: 'https://instagram.com/ashleighcooper', label: '@ashleighcooper' },
         ],
@@ -52,7 +52,7 @@ export const teamMembers: TeamMember[] = [
             'Ifeoluwa believes that every space has a story to tell, and her designs create atmospheres that enhance narrative and evoke emotion.'
         ],
         image: '/images/ife-portrait.webp',
-        heroImage: '/images/ife-hero.webp',
+        heroImage: '/images/ife-hero.png',
         socialLinks: [
             { platform: 'instagram', url: 'https://instagram.com/ifeoluwa.design', label: '@ifeoluwa.design' },
         ],
