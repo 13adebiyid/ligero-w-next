@@ -1,10 +1,10 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import Navigation from '@/components/layout/Navigation'
 import SmoothScroll from '@/components/ui/SmoothScroll'
-import PageTransition from '@/components/animations/PageTransition'
+// import PageTransition from '@/components/animations/PageTransition'
 import CustomCursor from '@/components/ui/CustomCursor'
 import ThemeProvider from '@/components/providers/ThemeProvider'
 
@@ -13,12 +13,14 @@ const suissnord = localFont({
     src: '../public/fonts/suissnord.regular.woff',
     variable: '--font-suissnord',
     display: 'swap',
+    fallback: ['system-ui', 'arial'],
 })
 
 const madani = localFont({
     src: '../public/fonts/MadaniDEMO-Thin.woff',
     variable: '--font-madani',
     display: 'swap',
+    fallback: ['system-ui', 'arial'],
 })
 
 const inter = Inter({
@@ -59,11 +61,12 @@ export const metadata: Metadata = {
         shortcut: '/images/ligero-browser-icon.png',
         apple: '/images/ligero-browser-icon.png',
     },
-    viewport: {
-        width: 'device-width',
-        initialScale: 1,
-        maximumScale: 5,
-    },
+}
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
 }
 
 export default function RootLayout({
@@ -78,21 +81,11 @@ export default function RootLayout({
             <SmoothScroll>
                 <CustomCursor />
                 <Navigation />
-                <PageTransition>
-                    <main className="min-h-screen">
-                        {children}
-                    </main>
-                </PageTransition>
+                <main className="min-h-screen">
+                    {children}
+                </main>
             </SmoothScroll>
         </ThemeProvider>
-
-        {/* Preload critical videos */}
-        <link
-            rel="preload"
-            as="video"
-            href="/videos/test_video.mp4"
-            type="video/mp4"
-        />
         </body>
         </html>
     )

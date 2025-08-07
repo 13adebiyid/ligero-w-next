@@ -1,81 +1,67 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 interface VideoControlsProps {
-    videoId?: string
+    videoId: string
 }
 
-export default function VideoControls({ videoId = 'bgVideo' }: VideoControlsProps) {
+export default function VideoControls({ videoId }: VideoControlsProps) {
     const [isPlaying, setIsPlaying] = useState(true)
     const [isMuted, setIsMuted] = useState(true)
-    const videoRef = useRef<HTMLVideoElement | null>(null)
 
     useEffect(() => {
-        // Get video element by ID or class
-        const video = document.querySelector(`#${videoId}, video`) as HTMLVideoElement
+        const video = document.querySelector('video') as HTMLVideoElement
         if (video) {
-            videoRef.current = video
-
-            // Try to autoplay
-            video.play().then(() => {
-                setIsPlaying(true)
-            }).catch(() => {
+            video.play().catch(() => {
                 setIsPlaying(false)
             })
-
-            // Set initial mute state
-            video.muted = true
         }
-    }, [videoId])
+    }, [])
 
     const togglePlayPause = () => {
-        if (!videoRef.current) return
-
-        if (videoRef.current.paused) {
-            videoRef.current.play()
-            setIsPlaying(true)
-        } else {
-            videoRef.current.pause()
-            setIsPlaying(false)
+        const video = document.querySelector('video') as HTMLVideoElement
+        if (video) {
+            if (isPlaying) {
+                video.pause()
+            } else {
+                video.play()
+            }
+            setIsPlaying(!isPlaying)
         }
     }
 
     const toggleMute = () => {
-        if (!videoRef.current) return
-
-        videoRef.current.muted = !videoRef.current.muted
-        setIsMuted(videoRef.current.muted)
+        const video = document.querySelector('video') as HTMLVideoElement
+        if (video) {
+            video.muted = !isMuted
+            setIsMuted(!isMuted)
+        }
     }
 
     return (
-        <div className="fixed bottom-[30px] right-[30px] flex gap-[10px] z-[1000]">
+        <div className="fixed bottom-8 right-8 flex gap-3 z-20">
             <button
                 onClick={togglePlayPause}
-                className="bg-gray-500/80 border-0 p-2 rounded-full cursor-pointer w-[35px] h-[35px] flex items-center justify-center transition-all duration-300 hover:bg-gray-400 hover:scale-105"
-                aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                className="w-12 h-12 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/50 transition-all duration-300"
+                aria-label={isPlaying ? "Pause" : "Play"}
             >
-                <Image
-                    src={isPlaying ? '/images/pause-icon.webp' : '/images/play-icon.webp'}
-                    alt={isPlaying ? 'Pause' : 'Play'}
-                    width={15}
-                    height={15}
-                    className="brightness-0 invert"
+                <img
+                    src={isPlaying ? "/images/pause-icon.webp" : "/images/play-icon.webp"}
+                    alt={isPlaying ? "Pause" : "Play"}
+                    className="w-5 h-5 filter invert"
                 />
             </button>
-
             <button
                 onClick={toggleMute}
-                className="bg-gray-500/80 border-0 p-2 rounded-full cursor-pointer w-[35px] h-[35px] flex items-center justify-center transition-all duration-300 hover:bg-gray-400 hover:scale-105"
-                aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+                className="w-12 h-12 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/50 transition-all duration-300"
+                aria-label={isMuted ? "Unmute" : "Mute"}
             >
-                <Image
-                    src={isMuted ? '/images/sound-off-icon.webp' : '/images/sound-on-icon.webp'}
-                    alt={isMuted ? 'Sound off' : 'Sound on'}
-                    width={15}
-                    height={15}
-                    className="brightness-0 invert"
+                <img
+                    src={isMuted ? "/images/sound-off-icon.webp" : "/images/sound-on-icon.webp"}
+                    alt={isMuted ? "Sound Off" : "Sound On"}
+                    className="w-5 h-5 filter invert"
                 />
             </button>
         </div>
