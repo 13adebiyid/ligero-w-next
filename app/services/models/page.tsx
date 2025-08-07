@@ -1,11 +1,7 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 import ThemeSwitcher from '@/components/layout/ThemeSwitcher'
-
-export const metadata: Metadata = {
-    title: 'Models - Ligero',
-    description: 'A curated roster of professional models for photoshoots, campaigns, events, and brand activations',
-}
 
 export default function ModelsPage() {
     return (

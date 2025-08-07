@@ -1,11 +1,7 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 import ThemeSwitcher from '@/components/layout/ThemeSwitcher'
-
-export const metadata: Metadata = {
-    title: 'Songwriters - Ligero',
-    description: 'Professional songwriting services to bring your musical stories to life',
-}
 
 export default function SongwritersPage() {
     return (

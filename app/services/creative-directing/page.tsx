@@ -1,12 +1,8 @@
-import { Metadata } from 'next'
+'use client'
+
 import VideoGallery from '@/components/sections/VideoGallery'
 import ThemeSwitcher from '@/components/layout/ThemeSwitcher'
 import { creativeDirectingProjects } from '@/lib/data/projects'
-
-export const metadata: Metadata = {
-    title: 'Creative Directing - Ligero',
-    description: 'Bold visual storytelling that connects across cultures',
-}
 
 export default function CreativeDirectingPage() {
     return (

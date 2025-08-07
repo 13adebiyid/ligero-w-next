@@ -1,12 +1,8 @@
-import { Metadata } from 'next'
+'use client'
+
 import VideoGallery from '@/components/sections/VideoGallery'
 import ThemeSwitcher from '@/components/layout/ThemeSwitcher'
 import { setDesignProjects } from '@/lib/data/projects'
-
-export const metadata: Metadata = {
-    title: 'Set Designing - Ligero',
-    description: 'Innovative spatial storytelling and immersive set design',
-}
 
 export default function SetDesigningPage() {
     return (

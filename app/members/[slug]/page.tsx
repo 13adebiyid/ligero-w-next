@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,20 +17,7 @@ export async function generateStaticParams() {
     }))
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const member = getTeamMemberBySlug(params.slug)
 
-    if (!member) {
-        return {
-            title: 'Member Not Found - Ligero',
-        }
-    }
-
-    return {
-        title: `${member.name} - ${member.role} | Ligero`,
-        description: member.bio[0],
-    }
-}
 
 export default function MemberPage({ params }: PageProps) {
     const member = getTeamMemberBySlug(params.slug)
