@@ -1,42 +1,25 @@
 'use client'
 
 import Link from 'next/link'
-import { useRef, useEffect } from 'react'
+import OptimizedVideo from '@/components/ui/OptimizedVideo'
 import VideoControls from '@/components/ui/VideoControls'
 import ThemeSwitcher from '@/components/layout/ThemeSwitcher'
 
 export default function HomePage() {
-    const videoRef = useRef<HTMLVideoElement>(null)
-
-    useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.play().catch(() => {
-                // Auto-play was prevented
-            })
-        }
-    }, [])
-
     return (
         <div className="relative h-screen flex items-center justify-center overflow-hidden">
             {/* Background Video */}
             <div className="absolute inset-0 z-0">
-                <video
-                    ref={videoRef}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    disablePictureInPicture
-                    id="bgVideo"
-                >
-                    <source src="/videos/test_video.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
+                <OptimizedVideo
+                    src="/videos/test_video.mp4"
+                    poster="/videos/posters/test_video_poster.jpg"
+                    className="absolute inset-0 w-full h-full"
+                    priority
+                />
             </div>
 
             {/* Video Controls */}
-            <VideoControls videoId="bgVideo" />
+            <VideoControls videoId="hero-video" />
 
             {/* Theme Switcher */}
             <ThemeSwitcher />
